@@ -1,172 +1,60 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#090909">
-  <title>Useless</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body { width: 100%; min-height: 100%; margin: 0; }
-    body {
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background: radial-gradient(ellipse at 50% 48%, rgba(120,0,0,.16), transparent 43%), #090909;
-    }
-    main { width: 100%; min-height: 100svh; display: grid; place-items: center; padding: 24px; }
-    .assembly {
-      position: relative;
-      width: min(78vw, 320px);
-      height: min(70vw, 285px);
-      min-height: 220px;
-      perspective: 850px;
-      filter: drop-shadow(0 30px 25px rgba(0,0,0,.7));
-      -webkit-tap-highlight-color: transparent;
-    }
-    /* Fixed metal socket: the plunger visibly slides down inside this collar. */
-    .socket {
-      position: absolute;
-      left: 5%;
-      right: 5%;
-      bottom: 3%;
-      height: 48%;
-      border-radius: 50%;
-      background:
-        radial-gradient(ellipse at 50% 30%, #777 0%, #454545 38%, #202020 69%, #080808 100%);
-      box-shadow:
-        inset 0 5px 7px rgba(255,255,255,.3),
-        inset 0 -13px 18px rgba(0,0,0,.95),
-        0 12px 15px rgba(0,0,0,.8);
-    }
-    .socket::before {
-      content: "";
-      position: absolute;
-      inset: 9% 7%;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #080808 0%, #242424 42%, #050505 100%);
-      box-shadow: inset 0 8px 12px #000, 0 1px 1px rgba(255,255,255,.2);
-    }
-    .socket::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 5px solid transparent;
-      border-top-color: #858585;
-      border-left-color: #4a4a4a;
-      border-right-color: #171717;
-      border-bottom-color: #111;
-      pointer-events: none;
-    }
-    .plunger {
-      position: absolute;
-      z-index: 2;
-      left: 19%;
-      width: 62%;
-      height: 82%;
-      top: 0;
-      border: 0;
-      padding: 0;
-      cursor: pointer;
-      background: transparent;
-      transform: translateY(0);
-      transform-style: preserve-3d;
-      transition: transform 115ms cubic-bezier(.2,.7,.25,1);
-      touch-action: manipulation;
-      -webkit-appearance: none;
-      appearance: none;
-      outline: none;
-    }
-    /* The long shaded wall gives the red cap its cylindrical depth. */
-    .plunger::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 17%;
-      height: 78%;
-      border-radius: 0 0 50% 50% / 0 0 13% 13%;
-      background:
-        linear-gradient(90deg,
-          #56000a 0%, #97000f 8%, #d20a1b 20%,
-          #f02a35 38%, #bd0015 62%, #70000c 83%, #360006 100%);
-      box-shadow:
-        inset 10px 0 13px rgba(255,100,100,.16),
-        inset -13px 0 16px rgba(0,0,0,.5),
-        0 12px 12px rgba(0,0,0,.65);
-    }
-    /* Elliptical top face, with a raised lip and curved specular highlight. */
-    .plunger::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 38%;
-      border-radius: 50%;
-      background:
-        radial-gradient(ellipse at 34% 24%, rgba(255,255,255,.68), transparent 24%),
-        linear-gradient(155deg, #ff7777 0%, #f52b36 34%, #d60019 72%, #85000d 100%);
-      border: 2px solid rgba(255,125,125,.35);
-      box-shadow:
-        inset 0 5px 8px rgba(255,255,255,.35),
-        inset 0 -7px 10px rgba(75,0,8,.55),
-        0 4px 0 rgba(75,0,8,.9),
-        0 7px 10px rgba(0,0,0,.4);
-    }
-    .plunger:active, .plunger.pressed { transform: translateY(34px); }
-    .plunger:active::after, .plunger.pressed::after {
-      filter: brightness(.88) saturate(1.08);
-      box-shadow: inset 0 7px 10px rgba(60,0,8,.55), 0 1px 0 rgba(75,0,8,.9);
-    }
-    .plunger:focus-visible { outline: 3px solid white; outline-offset: 12px; border-radius: 50%; }
-    @media (hover: hover) { .plunger:hover::after { filter: brightness(1.08); } }
-    @media (prefers-reduced-motion: reduce) { .plunger { transition: none; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<title>Useless</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;background:#090909}
+body{min-height:100svh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 53%,#241012 0%,#111 34%,#080808 76%)}
+main{width:100%;min-height:100svh;display:grid;place-items:center;padding:24px}
+.machine{position:relative;width:min(78vw,340px);height:min(72vw,300px);min-height:230px;filter:drop-shadow(0 28px 22px #000b);-webkit-tap-highlight-color:transparent}
+.mount{position:absolute;left:0;right:0;bottom:0;height:39%;border-radius:50%;background:linear-gradient(180deg,#777 0%,#3d3d3d 13%,#171717 43%,#080808 78%,#303030 100%);box-shadow:inset 0 5px 5px #ffffff55,inset 0 -10px 13px #000,0 9px 13px #000}
+.mount:before{content:"";position:absolute;inset:12% 8%;border-radius:50%;background:linear-gradient(180deg,#080808,#242424 42%,#050505 75%);box-shadow:inset 0 8px 13px #000,0 1px 1px #ffffff33}
+.mount:after{content:"";position:absolute;inset:0;border-radius:50%;border:5px solid transparent;border-top-color:#a0a0a0;border-left-color:#555;border-right-color:#242424;border-bottom-color:#090909;box-shadow:0 -1px 2px #ffffff33;pointer-events:none}
+.plunger{position:absolute;z-index:2;inset:0 16% 0;border:0;padding:0;background:transparent;cursor:pointer;outline:none;touch-action:manipulation;transition:transform 150ms cubic-bezier(.2,.75,.25,1);-webkit-appearance:none;appearance:none}
+.stem{position:absolute;left:3%;right:3%;top:25%;height:72%;border-radius:0 0 16% 16% / 0 0 5% 5%;background:linear-gradient(90deg,#510009 0%,#90000f 8%,#d20b1d 20%,#f12b39 36%,#cf071c 55%,#85000e 80%,#400006 100%);box-shadow:inset 12px 0 13px #ff777722,inset -15px 0 17px #0008,0 9px 10px #0009}
+.stem:after{content:"";position:absolute;left:8%;top:0;width:2px;height:94%;background:linear-gradient(#ffaaaa66,transparent);filter:blur(1px)}
+.cap{position:absolute;left:0;right:0;top:0;height:39%;border-radius:50%;background:radial-gradient(ellipse at 31% 20%,#fff9 0%,#ffffff22 17%,transparent 31%),linear-gradient(155deg,#ff777d 0%,#f52c3c 35%,#d5001b 72%,#76000d 100%);border:2px solid #ff8b8b88;box-shadow:inset 0 6px 8px #ffffff66,inset 0 -8px 12px #51000bb3,0 5px 0 #71000c,0 10px 12px #0008}
+.plunger:active,.plunger.pressed{transform:translateY(43px)}
+.plunger:active .cap,.plunger.pressed .cap{filter:brightness(.86);box-shadow:inset 0 8px 12px #4b000a99,0 2px 0 #71000c}
+.plunger:focus-visible{outline:3px solid white;outline-offset:12px;border-radius:50%}
+@media(hover:hover){.plunger:hover .cap{filter:brightness(1.06)}}
+@media(prefers-reduced-motion:reduce){.plunger{transition:none}}
+</style>
 </head>
 <body>
-  <main>
-    <div class="assembly">
-      <div class="socket" aria-hidden="true"></div>
-      <button class="plunger" type="button" aria-label="Red button"></button>
-    </div>
-  </main>
-  <script>
-    const button = document.querySelector(".plunger");
-    let releaseTimer;
-    let audioContext;
-
-    function clickSound() {
-      try {
-        audioContext ??= new (window.AudioContext || window.webkitAudioContext)();
-        if (audioContext.state === "suspended") audioContext.resume();
-        const now = audioContext.currentTime;
-        const makeTone = (type, startHz, endHz, duration, volume) => {
-          const osc = audioContext.createOscillator();
-          const gain = audioContext.createGain();
-          osc.type = type;
-          osc.frequency.setValueAtTime(startHz, now);
-          osc.frequency.exponentialRampToValueAtTime(endHz, now + duration * .7);
-          gain.gain.setValueAtTime(.0001, now);
-          gain.gain.exponentialRampToValueAtTime(volume, now + .005);
-          gain.gain.exponentialRampToValueAtTime(.0001, now + duration);
-          osc.connect(gain).connect(audioContext.destination);
-          osc.start(now);
-          osc.stop(now + duration);
-        };
-        makeTone("triangle", 165, 58, .075, .13);
-        makeTone("sine", 78, 39, .12, .1);
-      } catch (_) {}
-    }
-
-    button.addEventListener("click", () => {
-      clearTimeout(releaseTimer);
-      button.classList.add("pressed");
-      clickSound();
-      releaseTimer = setTimeout(() => button.classList.remove("pressed"), 190);
+<main>
+  <div class="machine">
+    <div class="mount" aria-hidden="true"></div>
+    <button class="plunger" type="button" aria-label="Red button">
+      <span class="stem" aria-hidden="true"></span>
+      <span class="cap" aria-hidden="true"></span>
+    </button>
+  </div>
+</main>
+<script>
+const button=document.querySelector(".plunger");
+let releaseTimer,audioContext;
+function clickSound(){
+  try{
+    audioContext??=new(window.AudioContext||window.webkitAudioContext)();
+    if(audioContext.state==="suspended")audioContext.resume();
+    const now=audioContext.currentTime;
+    [[ "triangle",155,55,.075,.12 ],[ "sine",76,38,.12,.09 ]].forEach(([type,start,end,duration,volume])=>{
+      const osc=audioContext.createOscillator(),gain=audioContext.createGain();
+      osc.type=type;osc.frequency.setValueAtTime(start,now);osc.frequency.exponentialRampToValueAtTime(end,now+duration*.7);
+      gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(volume,now+.005);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+      osc.connect(gain).connect(audioContext.destination);osc.start(now);osc.stop(now+duration);
     });
-  </script>
+  }catch(_){}
+}
+button.addEventListener("click",()=>{
+  clearTimeout(releaseTimer);button.classList.add("pressed");clickSound();
+  releaseTimer=setTimeout(()=>button.classList.remove("pressed"),210);
+});
+</script>
 </body>
 </html>
