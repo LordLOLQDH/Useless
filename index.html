@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090909">
+  <title>Useless</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; }
+    body {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 48%, rgba(95, 0, 0, .18), transparent 48%),
+        #090909;
+    }
+    main {
+      width: 100%;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .button-wrap {
+      position: relative;
+      width: min( min(72vw, 300px), 300px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(0 24px 30px rgba(0,0,0,.65));
+      -webkit-tap-highlight-color: transparent;
+    }
+    .button-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background: rgba(255, 0, 20, .22);
+      filter: blur(30px);
+      transition: opacity .2s, transform .2s;
+    }
+    button {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      outline: none;
+      background: linear-gradient(155deg, #ff5555 0%, #f01425 28%, #c90016 72%, #8e0010 100%);
+      box-shadow:
+        inset 0 5px 3px rgba(255,255,255,.38),
+        inset 0 -11px 13px rgba(65,0,8,.5),
+        inset 5px 0 9px rgba(255,100,100,.16),
+        0 8px 0 #68000c,
+        0 13px 0 #390008,
+        0 22px 30px rgba(0,0,0,.55),
+        0 0 45px rgba(255,0,24,.2);
+      transition: transform .12s ease, box-shadow .12s ease, filter .2s ease;
+      touch-action: manipulation;
+    }
+    button::before {
+      content: "";
+      position: absolute;
+      top: 8%;
+      left: 13%;
+      width: 74%;
+      height: 36%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,0));
+      filter: blur(2px);
+      pointer-events: none;
+    }
+    button::after {
+      content: "";
+      position: absolute;
+      inset: 5%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: inset 0 0 12px rgba(255,255,255,.08);
+      pointer-events: none;
+    }
+    button:active, button.pressed {
+      transform: translateY(10px) scale(.975);
+      box-shadow:
+        inset 0 4px 8px rgba(60,0,8,.45),
+        inset 0 -2px 5px rgba(255,255,255,.12),
+        0 2px 0 #68000c,
+        0 4px 0 #390008,
+        0 8px 18px rgba(0,0,0,.5),
+        0 0 34px rgba(255,0,24,.28);
+      filter: saturate(1.12);
+    }
+    button:focus-visible {
+      outline: 3px solid rgba(255,255,255,.85);
+      outline-offset: 13px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      button, .button-wrap::before { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="button-wrap">
+      <button type="button" aria-label="Red button"></button>
+    </div>
+  </main>
+  <script>
+    const button = document.querySelector("button");
+    button.addEventListener("click", () => {
+      button.classList.add("pressed");
+      window.setTimeout(() => button.classList.remove("pressed"), 150);
+    });
+  </script>
+</body>
+</html>
