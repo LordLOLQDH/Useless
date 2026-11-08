@@ -3,57 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#090909">
+<meta name="theme-color" content="#101010">
 <title>Useless</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;min-height:100%;background:#090909}
-body{min-height:100svh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 53%,#241012 0%,#111 34%,#080808 76%)}
-main{width:100%;min-height:100svh;display:grid;place-items:center;padding:24px}
-.machine{position:relative;width:min(78vw,340px);height:min(72vw,300px);min-height:230px;filter:drop-shadow(0 28px 22px #000b);-webkit-tap-highlight-color:transparent}
-.mount{position:absolute;left:0;right:0;bottom:0;height:39%;border-radius:50%;background:linear-gradient(180deg,#777 0%,#3d3d3d 13%,#171717 43%,#080808 78%,#303030 100%);box-shadow:inset 0 5px 5px #ffffff55,inset 0 -10px 13px #000,0 9px 13px #000}
-.mount:before{content:"";position:absolute;inset:12% 8%;border-radius:50%;background:linear-gradient(180deg,#080808,#242424 42%,#050505 75%);box-shadow:inset 0 8px 13px #000,0 1px 1px #ffffff33}
-.mount:after{content:"";position:absolute;inset:0;border-radius:50%;border:5px solid transparent;border-top-color:#a0a0a0;border-left-color:#555;border-right-color:#242424;border-bottom-color:#090909;box-shadow:0 -1px 2px #ffffff33;pointer-events:none}
-.plunger{position:absolute;z-index:2;inset:0 16% 0;border:0;padding:0;background:transparent;cursor:pointer;outline:none;touch-action:manipulation;transition:transform 150ms cubic-bezier(.2,.75,.25,1);-webkit-appearance:none;appearance:none}
-.stem{position:absolute;left:3%;right:3%;top:25%;height:72%;border-radius:0 0 16% 16% / 0 0 5% 5%;background:linear-gradient(90deg,#510009 0%,#90000f 8%,#d20b1d 20%,#f12b39 36%,#cf071c 55%,#85000e 80%,#400006 100%);box-shadow:inset 12px 0 13px #ff777722,inset -15px 0 17px #0008,0 9px 10px #0009}
-.stem:after{content:"";position:absolute;left:8%;top:0;width:2px;height:94%;background:linear-gradient(#ffaaaa66,transparent);filter:blur(1px)}
-.cap{position:absolute;left:0;right:0;top:0;height:39%;border-radius:50%;background:radial-gradient(ellipse at 31% 20%,#fff9 0%,#ffffff22 17%,transparent 31%),linear-gradient(155deg,#ff777d 0%,#f52c3c 35%,#d5001b 72%,#76000d 100%);border:2px solid #ff8b8b88;box-shadow:inset 0 6px 8px #ffffff66,inset 0 -8px 12px #51000bb3,0 5px 0 #71000c,0 10px 12px #0008}
-.plunger:active,.plunger.pressed{transform:translateY(43px)}
-.plunger:active .cap,.plunger.pressed .cap{filter:brightness(.86);box-shadow:inset 0 8px 12px #4b000a99,0 2px 0 #71000c}
-.plunger:focus-visible{outline:3px solid white;outline-offset:12px;border-radius:50%}
-@media(hover:hover){.plunger:hover .cap{filter:brightness(1.06)}}
-@media(prefers-reduced-motion:reduce){.plunger{transition:none}}
+html,body{margin:0;min-height:100%;background:#0b0b0b}
+body{min-height:100svh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#252525 0%,#121212 38%,#080808 78%)}
+main{min-height:100svh;width:100%;display:grid;place-items:center;padding:24px}
+.switch-unit{width:min(82vw,360px);height:300px;display:grid;place-items:center;perspective:900px;filter:drop-shadow(0 28px 25px #000b)}
+.switch-panel{position:relative;width:210px;height:250px;border-radius:22px;background:linear-gradient(135deg,#666 0%,#343434 18%,#1d1d1d 48%,#090909 100%);box-shadow:inset 2px 2px 3px #ffffff55,inset -3px -4px 8px #000,0 2px 3px #000;display:flex;align-items:center;justify-content:center}
+.switch-panel:before{content:"";position:absolute;inset:8px;border-radius:16px;border:1px solid #ffffff20;box-shadow:inset 0 1px 2px #ffffff18;pointer-events:none}
+.screw{position:absolute;width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#aaa 0%,#555 30%,#202020 75%);box-shadow:inset 0 1px 2px #ffffff66,0 1px 2px #000}
+.screw:after{content:"";position:absolute;left:2px;right:2px;top:6px;height:2px;background:#171717;transform:rotate(-35deg);box-shadow:0 1px #ffffff35}
+.screw.tl{top:17px;left:17px}.screw.tr{top:17px;right:17px}.screw.bl{bottom:17px;left:17px}.screw.br{bottom:17px;right:17px}
+.switch-control{position:relative;width:150px;height:200px;border:0;padding:0;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;perspective:700px}
+.switch-control:focus-visible{outline:3px solid #fff;outline-offset:12px;border-radius:18px}
+.engraving{position:absolute;left:0;right:0;top:9px;display:flex;justify-content:space-between;padding:0 13px;color:#aaa;font:700 12px/1 Arial,sans-serif;letter-spacing:2px;text-shadow:0 -1px #000,0 1px #ffffff25}
+.well{position:absolute;left:50%;top:42px;width:86px;height:132px;transform:translateX(-50%);border-radius:44px;background:linear-gradient(90deg,#050505,#292929 18%,#090909 50%,#303030 82%,#050505);box-shadow:inset 0 7px 12px #000,0 1px 0 #ffffff22,0 8px 13px #0008}
+.pivot-ring{position:absolute;left:50%;top:94px;width:76px;height:76px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 35% 28%,#777 0%,#383838 30%,#111 70%,#555 100%);box-shadow:inset 0 3px 5px #ffffff45,inset 0 -5px 7px #000,0 2px 3px #000}
+.pivot-ring:after{content:"";position:absolute;inset:9px;border-radius:50%;border:2px solid #090909;box-shadow:0 1px 1px #ffffff35,inset 0 2px 4px #000}
+.lever{position:absolute;z-index:3;left:50%;top:24px;width:28px;height:120px;transform:translateX(-50%) rotateX(28deg);transform-origin:50% 82%;transition:transform 260ms cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;pointer-events:none}
+.lever-shaft{position:absolute;left:8px;top:22px;width:12px;height:91px;border-radius:8px;background:linear-gradient(90deg,#555 0%,#d7d7d7 23%,#777 48%,#eee 68%,#454545 100%);box-shadow:1px 2px 3px #000,inset 0 0 2px #fff}
+.lever-tip{position:absolute;left:0;top:0;width:28px;height:35px;border-radius:50%;background:radial-gradient(ellipse at 32% 22%,#fff 0%,#d9d9d9 12%,#888 36%,#393939 72%,#111 100%);box-shadow:inset 0 2px 3px #ffffffaa,0 3px 5px #0009}
+.lever-tip:after{content:"";position:absolute;left:5px;right:5px;top:5px;height:7px;border-radius:50%;background:#ffffff55;filter:blur(2px)}
+.switch-control[aria-pressed="true"] .lever{transform:translateX(-50%) rotateX(-28deg)}
+.switch-control[aria-pressed="true"] .well{box-shadow:inset 0 7px 12px #000,0 0 12px #65d87b33}
+.status-light{position:absolute;left:50%;bottom:14px;width:9px;height:9px;transform:translateX(-50%);border-radius:50%;background:#292929;box-shadow:inset 0 1px 2px #000,0 0 2px #000;transition:all .2s}
+.switch-control[aria-pressed="true"] .status-light{background:#6cff88;box-shadow:0 0 7px #52ff78,0 0 17px #52ff7888,inset 0 1px 2px #fff}
+@media(prefers-reduced-motion:reduce){.lever,.status-light{transition:none}}
 </style>
 </head>
 <body>
 <main>
-  <div class="machine">
-    <div class="mount" aria-hidden="true"></div>
-    <button class="plunger" type="button" aria-label="Red button">
-      <span class="stem" aria-hidden="true"></span>
-      <span class="cap" aria-hidden="true"></span>
-    </button>
+  <div class="switch-unit">
+    <div class="switch-panel">
+      <i class="screw tl"></i><i class="screw tr"></i><i class="screw bl"></i><i class="screw br"></i>
+      <button class="switch-control" type="button" aria-label="Kippschalter" aria-pressed="false">
+        <span class="engraving"><span>OFF</span><span>ON</span></span>
+        <span class="well"></span>
+        <span class="pivot-ring"></span>
+        <span class="lever"><span class="lever-shaft"></span><span class="lever-tip"></span></span>
+        <span class="status-light"></span>
+      </button>
+    </div>
   </div>
 </main>
 <script>
-const button=document.querySelector(".plunger");
-let releaseTimer,audioContext;
-function clickSound(){
+const control=document.querySelector(".switch-control");
+let audioContext;
+function clack(){
   try{
     audioContext??=new(window.AudioContext||window.webkitAudioContext)();
     if(audioContext.state==="suspended")audioContext.resume();
-    const now=audioContext.currentTime;
-    [[ "triangle",155,55,.075,.12 ],[ "sine",76,38,.12,.09 ]].forEach(([type,start,end,duration,volume])=>{
-      const osc=audioContext.createOscillator(),gain=audioContext.createGain();
-      osc.type=type;osc.frequency.setValueAtTime(start,now);osc.frequency.exponentialRampToValueAtTime(end,now+duration*.7);
-      gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(volume,now+.005);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
-      osc.connect(gain).connect(audioContext.destination);osc.start(now);osc.stop(now+duration);
-    });
+    const t=audioContext.currentTime;
+    const noiseBuffer=audioContext.createBuffer(1,Math.floor(audioContext.sampleRate*.035),audioContext.sampleRate);
+    const data=noiseBuffer.getChannelData(0);
+    for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,3);
+    const noise=audioContext.createBufferSource(),filter=audioContext.createBiquadFilter(),gain=audioContext.createGain();
+    noise.buffer=noiseBuffer;filter.type="lowpass";filter.frequency.value=1500;
+    gain.gain.setValueAtTime(.22,t);gain.gain.exponentialRampToValueAtTime(.001,t+.035);
+    noise.connect(filter).connect(gain).connect(audioContext.destination);noise.start(t);
+    const osc=audioContext.createOscillator(),og=audioContext.createGain();
+    osc.type="square";osc.frequency.setValueAtTime(110,t);osc.frequency.exponentialRampToValueAtTime(48,t+.045);
+    og.gain.setValueAtTime(.07,t);og.gain.exponentialRampToValueAtTime(.001,t+.05);
+    osc.connect(og).connect(audioContext.destination);osc.start(t);osc.stop(t+.055);
   }catch(_){}
 }
-button.addEventListener("click",()=>{
-  clearTimeout(releaseTimer);button.classList.add("pressed");clickSound();
-  releaseTimer=setTimeout(()=>button.classList.remove("pressed"),210);
+control.addEventListener("click",()=>{
+  control.setAttribute("aria-pressed",control.getAttribute("aria-pressed")==="true"?"false":"true");
+  clack();
 });
 </script>
 </body>
